@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.className} bg-[#1F1F1F] mx-auto grid grid-cols-12 py-0 px-0 md:py-2 md:px-4 `}>
         <LeftSide/>
-        <div className=" h-[97vh]  pl-20 pr-12 py-14 text-white overflow-y-scroll leftScroll col-span-12 md:col-span-7 lg:col-span-8 xl:col-span-9">
+        <div className=" h-[97vh] pl-4  lg:pl-20 pr-4 lg:pr-12 py-8 md:py-14 text-white overflow-y-scroll leftScroll col-span-12 md:col-span-7 lg:col-span-8 xl:col-span-9">
           {children}
         </div>
       </body>
