@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+.leftScroll::-webkit-scrollbar{
+  display: none;
+}
+.leftScroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+} */
+
+.rotateShape{
+  animation-name: example;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+  animation-direction:normal;
+  animation-timing-function: linear;
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+@keyframes example {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+.moveDownShape{
+  animation-name: moving;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+  animation-direction:normal;
+  animation-timing-function: linear;
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+@keyframes moving {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+.EZDrawer .EZDrawer__container{
+  background: #191919 !important;
+}
