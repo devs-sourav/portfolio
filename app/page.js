@@ -1,15 +1,13 @@
-import BannerHomeType from "@/components/BannerHomeType";
-import HeadNav from "@/components/HeadNav";
+import About from "@/components/About";
+import Introduce from "@/components/Introduce";
 
 
 
 export default function Home() {
   return (
-    <div>
-      
-      <HeadNav/>
-      <BannerHomeType/>
-
-    </div>
+    <>
+      <Introduce/>
+      <About/>
+    </>
   );
 }

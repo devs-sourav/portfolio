@@ -38,3 +38,13 @@
 .EZDrawer .EZDrawer__container{
   background: #191919 !important;
 }
+* {
+  scroll-behavior: smooth;
+}
+.nav-active  {
+  color: green !important;
+}
+.active-scroll-spy {
+  background-color: yellowgreen;
+  border-radius: 15px;
+}
