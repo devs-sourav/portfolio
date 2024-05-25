@@ -97,7 +97,7 @@ export default function NavbarStatic() {
             return (
               <li className={activeSection === item.link ? 'active group cursor-pointer ease-linear transition-all relative' : 'group cursor-pointer text-[#999999] ease-linear transition-all hover:text-[#FFCC01] relative'}  key={index}>
                 <Link href={`#${item.link}`}>
-                  <h3 className='group/edit transition-all ease-linear' style={activeSection === item.link || activeLink === item.link ? activeStyle : {}} onClick={() => handleClick(item.link)}>
+                  <h3 className='group/edit transition-all ease-linear' style={activeSection === item.link || activeLink === item.link ? activeStyle : {}}>
                     <Icon className='w-5' />
                     <span style={{ left: item.left + 'px' }} className='absolute text-[12px] rounded-md top-2/4 text-right px-2 py-1 -translate-y-1/2 text-white bg-[#404042] before:content-[""] before:w-[10px] before:h-[10px] before:bg-[#404042] before:-right-[3px] before:top-1/2 before:absolute before:-translate-y-1/2 before:rotate-[54deg] before:-skew-x-[8deg] before:-skew-y-[39deg] before:-z-10 hidden group-hover/edit:block transition-all ease-linear before:transition-all before:ease-linear'>
                       {item.title}
