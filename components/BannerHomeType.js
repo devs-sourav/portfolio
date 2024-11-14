@@ -4,6 +4,7 @@ import {  BriefcaseBusiness, ClipboardCheck, Download, GripVertical, Home, Mail,
 import TypeWrite from './TypeWrite';
 import NavbarStatic from './NavbarStatic';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const navData = [
   {
@@ -17,9 +18,9 @@ const navData = [
     left: '-67'
   },
   {
-    title: "Resume",
+    title: "Experience",
     icon: BriefcaseBusiness,
-    left: '-78'
+    left: '-97'
   },
   {
     title: "Services",
@@ -60,10 +61,10 @@ export default function BannerHomeType() {
           <Download className="group-hover:text-[#FFCC01] ease-linear transition-all" />
           <span className="uppercase text-sm group-hover:text-[#FFCC01] ease-linear transition-all">Download CV</span>
         </button>
-        <div className='relative right-24 top-24 sm:top-10 w-20 md:w-40'>
+        <Link href={"/#portfolio"} className='relative right-24 top-24 sm:top-10 w-20 md:w-40'>
           <Image className="w-40 cursor-pointer moveDownShape" width={200} height={200} src={'/portfolioCircle.png'} alt="Portfolio Circle"/>
           <MoveDown className='cursor-pointer absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'/>
-        </div>
+        </Link>
       </div>
 
 

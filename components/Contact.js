@@ -1,12 +1,10 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
-import HeadNav from './HeadNav';
-import BannerHomeType from './BannerHomeType';
-import CounterType from './CounterType';
+import ContactForm from './ContactForm';
 
-export default function Introduce() {
+export default function Contact() {
   const [isInViewport, setIsInViewport] = useState(false);
-  const introduceSectionRef = useRef(null);
+  const contactSectionRef = useRef(null);
 
   useEffect(() => {
     const options = {
@@ -28,13 +26,13 @@ export default function Introduce() {
       });
     }, options);
 
-    if (introduceSectionRef.current) {
-      observer.observe(introduceSectionRef.current);
+    if (contactSectionRef.current) {
+      observer.observe(contactSectionRef.current);
     }
 
     return () => {
-      if (introduceSectionRef.current) {
-        observer.unobserve(introduceSectionRef.current);
+      if (contactSectionRef.current) {
+        observer.unobserve(contactSectionRef.current);
       }
     };
   }, []);
@@ -42,15 +40,13 @@ export default function Introduce() {
   // Update the URL hash when isInViewport changes
   useEffect(() => {
     if (isInViewport) {
-      window.location.hash = 'home';
+      window.location.hash = 'contact';
     }
   }, [isInViewport]);
 
   return (
-    <section data-section="home" className='pb-28' id="home" ref={introduceSectionRef}>
-      <HeadNav/>
-      <BannerHomeType/>
-      <CounterType/>
+    <section className="contact-area page-section scroll-content py-24 max-w-4xl" id="contact" ref={contactSectionRef}>
+      <ContactForm/>
     </section>
   );
 }
