@@ -26,13 +26,15 @@ export default function Contact() {
       });
     }, options);
 
-    if (contactSectionRef.current) {
-      observer.observe(contactSectionRef.current);
+    const currentRef = contactSectionRef.current; // Store the ref in a local variable
+
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (contactSectionRef.current) {
-        observer.unobserve(contactSectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef); // Use the local variable for cleanup
       }
     };
   }, []);
