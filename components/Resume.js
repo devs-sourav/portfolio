@@ -36,13 +36,13 @@ const Resume = () => {
     const options = {
       root: null, // Observe the viewport
       rootMargin: "0px",
-      threshold: 0.1, // Trigger when at least 10% of the element is in the viewport
+      threshold: 0.5, // Trigger when at least 10% of the element is in the viewport
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         console.log(entry.intersectionRatio); // Log intersection ratio for debugging
-        if (entry.intersectionRatio >= 0.1) {
+        if (entry.intersectionRatio >= 0.5) {
           // Component is more than 10% in the viewport
           setIsInViewport(true);
         } else {
