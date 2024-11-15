@@ -84,7 +84,7 @@ export default function Portfolio() {
           </div>
 
           {/* Second row with two items */}
-          <div className="row portfolio-items grid grid-cols-2 gap-10 mb-14 pt-5">
+          <div className="row portfolio-items grid grid-cols-1 sm:grid-cols-2 gap-10 mb-14 pt-5">
             {portfolio[1] && (
               <div>
                 <div className="portfolio-item portfolio-full group">
