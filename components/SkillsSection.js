@@ -1,13 +1,12 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Shapes } from "lucide-react"; // Import Lucide icons
 import Header from "./Header";
 
 export default function SkillsSection() {
   const [skills, setSkills] = useState([]);
   const [error, setError] = useState(null);
-  const [isInViewport, setIsInViewport] = useState(false); // To track visibility
-  const skillsSectionRef = useRef(null);
+
 
   useEffect(() => {
     // Fetch skills data from the API
@@ -28,42 +27,6 @@ export default function SkillsSection() {
     fetchSkillsData();
   }, []);
 
-  useEffect(() => {
-    const options = {
-      root: null, // Observe the viewport
-      rootMargin: '0px',
-      threshold: 0.5, // Trigger when at least 50% of the element is in the viewport
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // When the section enters the viewport
-          setIsInViewport(true);
-        } else {
-          // When the section leaves the viewport
-          setIsInViewport(false);
-        }
-      });
-    }, options);
-
-    if (skillsSectionRef.current) {
-      observer.observe(skillsSectionRef.current);
-    }
-
-    return () => {
-      if (skillsSectionRef.current) {
-        observer.unobserve(skillsSectionRef.current);
-      }
-    };
-  }, []);
-
-  // Update the URL hash when isInViewport changes
-  useEffect(() => {
-    if (isInViewport) {
-      window.location.hash = 'skills';
-    } 
-  }, [isInViewport]);
 
   if (error) return <p className="text-red-500 text-center">{error}</p>;
 
@@ -73,7 +36,6 @@ export default function SkillsSection() {
       id="skills"
       data-section="skills"
       className="skills-area page-section scroll-to-page py-24"
-      ref={skillsSectionRef} // Attach the ref here
     >
       <div className="custom-container">
         <div className="flex mb-16">

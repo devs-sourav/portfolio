@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function LeftSide() {
   return (
-    <div className=" w-full rounded-3xl border border-[#565656] px-6 py-8 text-white col-span-12 md:col-span-5 lg:col-span-4 xl:col-span-3">
+    <div className=" st w-full rounded-3xl border border-[#565656] px-6 py-8 text-white col-span-12 md:col-span-5 lg:col-span-4 xl:col-span-3">
         <div className="flex justify-between items-center">
         <Image className="w-24 sm:w-32 " width={200} height={50} src={'/logo.png'} alt="logo"/>
         <div className="text-right">

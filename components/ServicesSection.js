@@ -1,55 +1,18 @@
-"use client";
-import React, { useEffect, useRef, useState } from 'react';
+
 import { Sliders, Code, Blocks, Tangent, StretchHorizontal } from "lucide-react";
 import Header from "./Header";
 
 const ServicesSection = () => {
-  const [isInViewport, setIsInViewport] = useState(false);
-  const servicesSectionRef = useRef(null);
 
-  useEffect(() => {
-    const options = {
-      root: null, // Observe the viewport
-      rootMargin: '0px',
-      threshold: 0.5, // Trigger when at least 50% of the element is in the viewport
-    };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.intersectionRatio >= 0.5) {
-          // Component is more than 50% in the viewport
-          setIsInViewport(true);
-        } else {
-          // Component is less than 50% in the viewport
-          setIsInViewport(false);
-        }
-      });
-    }, options);
 
-    if (servicesSectionRef.current) {
-      observer.observe(servicesSectionRef.current);
-    }
-
-    return () => {
-      if (servicesSectionRef.current) {
-        observer.unobserve(servicesSectionRef.current);
-      }
-    };
-  }, []);
-
-  // Update the URL hash when isInViewport changes
-  useEffect(() => {
-    if (isInViewport) {
-      window.location.hash = 'services';
-    } 
-  }, [isInViewport]);
 
   return (
     <section
       className="services-area page-section scroll-to-page py-24"
       id="services"
       data-section="services"
-      ref={servicesSectionRef}
+      
     >
       <div className="custom-container">
         <div className="services-content content-width">

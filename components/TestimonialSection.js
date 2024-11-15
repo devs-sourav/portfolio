@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
+import {  useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { ChevronLeft, ChevronRight, TextSelect } from "lucide-react";
@@ -7,47 +7,7 @@ import "swiper/css";
 import Header from "./Header";
 
 const TestimonialSection = () => {
-  const [activeIndex, setActiveIndex] = useState(1); // start at 1 for display
-  const [isInViewport, setIsInViewport] = useState(false);
-  const testimonialSectionRef = useRef(null);
-
-  // Intersection Observer for tracking visibility in viewport
-  useEffect(() => {
-    const options = {
-      root: null, // Observe the viewport
-      rootMargin: "10px",
-      threshold: 0.4, // Trigger when at least 40% of the element is in the viewport
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.intersectionRatio >= 0.4) {
-          // Component is more than 40% in the viewport
-          setIsInViewport(true);
-        } else {
-          // Component is less than 40% in the viewport
-          setIsInViewport(false);
-        }
-      });
-    }, options);
-
-    if (testimonialSectionRef.current) {
-      observer.observe(testimonialSectionRef.current);
-    }
-
-    return () => {
-      if (testimonialSectionRef.current) {
-        observer.unobserve(testimonialSectionRef.current);
-      }
-    };
-  }, []);
-
-  // Update the URL hash when isInViewport changes
-  useEffect(() => {
-    if (isInViewport) {
-      window.location.hash = "testimonial";
-    }
-  }, [isInViewport]);
+  const [activeIndex, setActiveIndex] = useState(1); 
 
   const testimonials = [
     {
@@ -77,7 +37,7 @@ const TestimonialSection = () => {
   ];
 
   return (
-    <section ref={testimonialSectionRef} className="py-24" id="testimonial">
+    <section className="py-24" id="testimonial">
       <div className=" ">
         <div className="mb-16">
           <div className="flex mb-16">

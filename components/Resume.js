@@ -6,8 +6,7 @@ import Header from "./Header";
 import Link from "next/link";
 
 const Resume = () => {
-  const [isInViewport, setIsInViewport] = useState(false);
-  const resumeRef = useRef(null);
+
 
   // Directly define resumeData here
   const resumeData = {
@@ -32,50 +31,13 @@ const Resume = () => {
     ],
   };
 
-  useEffect(() => {
-    const options = {
-      root: null, // Observe the viewport
-      rootMargin: "0px",
-      threshold: 0.5, // Trigger when at least 10% of the element is in the viewport
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        console.log(entry.intersectionRatio); // Log intersection ratio for debugging
-        if (entry.intersectionRatio >= 0.5) {
-          // Component is more than 10% in the viewport
-          setIsInViewport(true);
-        } else {
-          // Component is less than 10% in the viewport
-          setIsInViewport(false);
-        }
-      });
-    }, options);
-
-    if (resumeRef.current) {
-      observer.observe(resumeRef.current);
-    }
-
-    return () => {
-      if (resumeRef.current) {
-        observer.unobserve(resumeRef.current);
-      }
-    };
-  }, []);
-
-  // Update the URL hash when isInViewport changes
-  useEffect(() => {
-    if (isInViewport) {
-      window.location.hash = "experience";
-    } 
-  }, [isInViewport]);
-
+ 
   return (
     <section
       id="experience"
-      data-section="about"
+      data-section="experience"
       className="resume-area page-section py-24 overflow-hidden  transition-colors"
-      ref={resumeRef}
+      
     >
       <div className=" ">
         <div className="flex mb-16">

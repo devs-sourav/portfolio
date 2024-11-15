@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BriefcaseBusiness, GripVertical, Home, Mail, Shapes, StretchHorizontal, TextSelect, User } from "lucide-react";
 import Link from 'next/link';
 
@@ -14,48 +14,36 @@ const navData = [
 ];
 
 export default function NavbarStatic() {
-  const [hash, setHash] = useState('');
+  const [activeLink, setActiveLink] = useState('');
 
+  // Set up IntersectionObserver to detect when a section comes into view
   useEffect(() => {
-    if (typeof window !== 'undefined') { // Check if window is available
-      const handleHashChange = () => {
-        setHash(window.location.hash); // Update state when hash changes
-      };
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5, // 50% of the section must be visible for it to be considered active
+    };
 
-      const handlePathnameChange = () => {
-        setHash(window.location.hash); // Update hash state on pathname change as well
-      };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveLink(entry.target.id); // Update the active link when a section is in view
+        }
+      });
+    }, options);
 
-      // Set up event listeners
-      window.addEventListener('hashchange', handleHashChange);
-      window.addEventListener('popstate', handlePathnameChange);
-
-      // Set the initial hash on page load
-      setHash(window.location.hash);
-
-      // Clean up the event listeners when the component unmounts
-      return () => {
-        window.removeEventListener('hashchange', handleHashChange);
-        window.removeEventListener('popstate', handlePathnameChange);
-      };
-    }
-  }, []); // Only runs on mount in the client
-
-  const handleClick = (e, link) => {
-    e.preventDefault();
-    if (typeof window !== 'undefined') { // Ensure this runs only in the browser
-      const target = document.getElementById(link);
-      if (target) {
-        window.location.hash = link; // Set the hash in the URL
-
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start', // Scroll the section to the top of the viewport
-          inline: 'nearest',
-        });
+    // Observe each section
+    navData.forEach(item => {
+      const section = document.getElementById(item.link);
+      if (section) {
+        observer.observe(section);
       }
-    }
-  };
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <ul className='z-50 fixed right-12 border border-[#565656] group ease-linear transition-all w-[54px] py-6 rounded-full flex flex-col items-center gap-y-5'>
@@ -64,9 +52,9 @@ export default function NavbarStatic() {
         return (
           <li
             key={index}
-            className={`group cursor-pointer text-[#999999] ease-linear transition-all hover:text-[#FFCC01] relative ${hash === `#${item.link}` ? 'text-[#FFCC01]' : ''}`}
+            className={`group cursor-pointer text-[#999999] ease-linear transition-all hover:text-[#FFCC01] relative ${activeLink === item.link ? 'text-[#FFCC01]' : ''}`}
           >
-            <Link href={`/#${item.link}`} onClick={(e) => handleClick(e, item.link)}>
+            <Link href={`#${item.link}`}>
               <h3 className='group/edit transition-all ease-linear'>
                 <Icon className='w-5' />
                 <span

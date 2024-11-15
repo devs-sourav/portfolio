@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { GripVertical } from "lucide-react"; // Import Lucide icons
 import Header from "./Header";
 import Link from "next/link";
@@ -7,50 +7,7 @@ import Link from "next/link";
 export default function PortfolioSection() {
   const [portfolio, setPortfolio] = useState([]);
   const [error, setError] = useState(null);
-  const [isInViewport, setIsInViewport] = useState(false);
-  const portfolioSectionRef = useRef(null);
 
-  useEffect(() => {
-    const options = {
-      root: null, // Observe the viewport
-      rootMargin: "0px",
-      threshold: 0.1, // Trigger when at least 50% of the element is in the viewport
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        console.log(entry.intersectionRatio); // Log intersection ratio for debugging
-        if (entry.intersectionRatio >= 0.1) {
-          // Component is more than 50% in the viewport
-          setIsInViewport(true);
-        } else {
-          // Component is less than 50% in the viewport
-          setIsInViewport(false);
-        }
-      });
-    }, options);
-
-    if (portfolioSectionRef.current) {
-      observer.observe(portfolioSectionRef.current);
-    }
-
-    return () => {
-      if (portfolioSectionRef.current) {
-        observer.unobserve(portfolioSectionRef.current);
-      }
-    };
-  }, []);
-
-  // Update the URL hash when isInViewport changes
-  useEffect(() => {
-    if (isInViewport) {
-      window.location.hash = "portfolio";
-    } else {
-      window.location.hash = ""; // Clear hash if not in viewport
-    }
-  }, [isInViewport]);
-
-  console.log(isInViewport);
 
   useEffect(() => {
     const fetchPortfolioData = async () => {
@@ -76,7 +33,6 @@ export default function PortfolioSection() {
 
   return (
     <section
-      ref={portfolioSectionRef}
       id="portfolio"
       data-section="portfolio"
       className="portfolio-area page-section scroll-to-page py-24 "

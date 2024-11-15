@@ -4,49 +4,8 @@ import Header from './Header';
 import { User } from "lucide-react";
 
 export default function About() {
-  const [isInViewport, setIsInViewport] = useState(false);
-  const aboutSectionRef = useRef(null);
-
-  useEffect(() => {
-    const options = {
-      root: null, // Observe the viewport
-      rootMargin: '0px',
-      threshold: 0.5, // Trigger when at least 50% of the element is in the viewport
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        console.log(entry.intersectionRatio); // Log intersection ratio for debugging
-        if (entry.intersectionRatio >= 0.2 && entry.intersectionRatio <= 0.8) {
-          // Component is more than 50% in the viewport
-          setIsInViewport(true);
-        } else {
-          // Component is less than 50% in the viewport
-          setIsInViewport(false);
-        }
-      });
-    }, options);
-
-    if (aboutSectionRef.current) {
-      observer.observe(aboutSectionRef.current);
-    }
-
-    return () => {
-      if (aboutSectionRef.current) {
-        observer.unobserve(aboutSectionRef.current);
-      }
-    };
-  }, []);
-
-  // Update the URL hash when isInViewport changes
-  useEffect(() => {
-    if (isInViewport) {
-      window.location.hash = 'about';
-    }
-  }, [isInViewport]);
-
   return (
-    <section data-section="about" id="about" className="py-20" ref={aboutSectionRef}>
+    <section id="about" data-section="about"  className="py-20" >
       <div className="flex">
         <Header title="about" HomeIcon={User} />
       </div>
