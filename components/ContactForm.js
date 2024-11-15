@@ -1,12 +1,12 @@
-import { Mail, Shapes } from "lucide-react";
+import { Mail, Upload } from "lucide-react";
 import Header from "./Header";
 
 const ContactForm = () => {
   return (
     <div>
-      <div className="custom-container">
+      <div className="custom-container ">
         <div className="contact-content content-width max-w-4xl mx-auto">
-          <div className="section-header mb-10">
+          <div className="section-header mb-10 pt-32">
             <div className="flex mb-16">
               <Header title="Contact" HomeIcon={Mail} />
             </div>
@@ -154,7 +154,7 @@ const ContactForm = () => {
                   htmlFor="upload-attachment"
                   className="flex items-center space-x-2 text-sm font-medium text-gray-300 mb-2"
                 >
-                  <Shapes className="w-5 h-5 text-primary" />
+                  <Upload className="w-5 h-5 text-primary" />
                   <span>Add an attachment</span>
                 </label>
                 <input

@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { BriefcaseBusiness, GripVertical, Home, Mail, Shapes, StretchHorizontal, TextSelect, User } from "lucide-react";
+import { BriefcaseBusiness,GraduationCap, GripVertical, Home, Mail, Shapes, StretchHorizontal, TextSelect, User } from "lucide-react";
 import Link from 'next/link';
 
 const navData = [
   { title: "Home", icon: Home, left: '-65', link: 'home' },
   { title: "About", icon: User, left: '-67', link: 'about' },
   { title: "Experience", icon: BriefcaseBusiness, left: '-97', link: 'experience' },
+  { title: "Education", icon: GraduationCap, left: '-97', link: 'education' },
   { title: "Services", icon: StretchHorizontal, left: '-82', link: 'services' },
   { title: "Skills", icon: Shapes, left: '-62', link: 'skills' },
-  { title: "Portfolios", icon: GripVertical, left: '-87', link: 'portfolio' },
+  { title: "Portfolio", icon: GripVertical, left: '-87', link: 'port' },
+  // { title: "Portfolios", icon: GripVertical, left: '-87', link: 'portfolios' },
   { title: "Testimonial", icon: TextSelect, left: '-97', link: 'testimonial' },
   { title: "Contact", icon: Mail, left: '-77', link: 'contact' },
 ];

@@ -2,7 +2,9 @@
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import ContactForm from "@/components/ContactForm";
+import Education from "@/components/Education";
 import Introduce from "@/components/Introduce";
+import Portfolio from "@/components/Portfolio";
 import PortfolioSection from "@/components/PortfolioSection";
 import Resume from "@/components/Resume";
 import ServicesSection from "@/components/ServicesSection";
@@ -17,9 +19,11 @@ export default function Home() {
       <Introduce/>
       <About/>
       <Resume/>
+      <Education/>
       <ServicesSection/>
       <SkillsSection/>
-      <PortfolioSection/>
+      {/* <PortfolioSection/> */}
+      <Portfolio/>
       <TestimonialSection/>
       <Contact/>
     </>

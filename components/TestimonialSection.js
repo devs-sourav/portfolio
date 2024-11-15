@@ -37,7 +37,7 @@ const TestimonialSection = () => {
   ];
 
   return (
-    <section className="py-24" id="testimonial">
+    <section className="pt-24 pb-40" id="testimonial">
       <div className=" ">
         <div className="mb-16">
           <div className="flex mb-16">
