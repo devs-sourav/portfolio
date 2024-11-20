@@ -61,7 +61,7 @@ export default function BannerHomeType() {
           <Download className="group-hover:text-[#FFCC01] ease-linear transition-all" />
           <span className="uppercase text-sm group-hover:text-[#FFCC01] ease-linear transition-all">Download CV</span>
         </button>
-        <Link href={"/#portfolio"} className='relative right-24 top-24 sm:top-10 w-20 md:w-40'>
+        <Link href={"/#port"} className='relative right-24 top-24 sm:top-10 w-20 md:w-40'>
           <Image className="w-40 cursor-pointer moveDownShape" width={200} height={200} src={'/portfolioCircle.png'} alt="Portfolio Circle"/>
           <MoveDown className='cursor-pointer absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'/>
         </Link>
